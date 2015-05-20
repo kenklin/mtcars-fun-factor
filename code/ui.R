@@ -24,7 +24,10 @@ shinyUI(fluidPage(
   headerPanel('1974 Cars Fun Factor'),
 
   sidebarPanel(
-    h3("How would you define a car's fun factor?")
+    h3(("How do "), strong("you")
+      ,(" define a car's "), strong("fun")
+      ,("factor?")
+    )
     ,p("Explore and create your fun factor formula for 1974 cars.")
     
     ,p(("The"), strong("fun")

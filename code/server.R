@@ -3,7 +3,7 @@ library(ggplot2)
 palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
           "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
 
-# Return a vector of all the funFactors multiplied
+# Returns a vector multiplying all funFactors and dividing funDenominators
 calcFun <- function(cars, funFactors, funDenominators) {
   fun <- cars[,funFactors[1]]
   if (length(funFactors) >= 2) { 
@@ -11,13 +11,11 @@ calcFun <- function(cars, funFactors, funDenominators) {
       fun <- fun * cars[,funFactors[i]]
     }
   }
-  
   if (length(funDenominators) > 0) {
     for (i in 1:length(funDenominators)) {
       fun <- fun / cars[,funDenominators[i]]      
     }
   }
-  
   return(fun)
 }
 
