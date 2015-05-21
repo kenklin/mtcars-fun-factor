@@ -1,8 +1,5 @@
 library(ggplot2)
 
-palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
-          "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
-
 # Returns a vector multiplying all funFactors and dividing funDenominators
 calcFun <- function(cars, funFactors, funDenominators) {
   fun <- seq(1, length=nrow(cars), by=0) # all 1s
@@ -49,15 +46,16 @@ shinyServer(function(input, output, session) {
     if (length(input$funDenominators) > 0) {
       title <- paste0(title, "/(", paste(input$funDenominators, collapse=" \u00D7 "), ")")
     }
-    title <- paste(title, "vs.", input$xcol)
+    title <- paste(title, "\nvs.", input$xcol)
 
     p <- ggplot(cars, aes_string(x=input$xcol, y="fun")) +
             ggtitle(title) +
+            theme(plot.title = element_text(size=18, lineheight=.8, face="bold", color="#48ca3b"))
             geom_point()
 
     p <- p + geom_smooth(method="lm")
     
-    p <- p + geom_text(hjust=0, angle=-30, size=4,
+    p <- p + geom_text(hjust=0, angle=-30, size=4, color="red",
                        aes(label=rownames(mtcars)))
 
     # Facet?
