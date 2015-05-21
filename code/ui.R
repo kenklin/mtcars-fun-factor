@@ -29,8 +29,11 @@ shinyUI(fluidPage(
     ,p("Explore and create your own fun factor formula for 1974 cars.")   
     ,p("The", strong("fun")
       ,"factor is computed by multiplying the numerators you supply below"
-      ,"and dividing by the denominators.  It is then plotted on the y axis"
-      ,"in the graph on the right."
+      ,"and dividing by the denominators."
+    )
+    ,p("Cars from the 1974"
+      ,a("mtcars", href="http://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html")
+      ,"dataset are then plotted in the graph and table on the right."
     )
     ,p("To create formulas with high", strong("fun"), "factors, try"
       ,br(), "- \"bigger is better\" numerators"
@@ -49,8 +52,7 @@ shinyUI(fluidPage(
     ,h3("split plot by")
     ,selectInput('facet', NA, choices=c('(none)', 'cyl', 'vs', 'am', 'gear', 'carb'), selected='(none)')
 
-    ,p("The dataset used is"
-      ,a("mtcars", href="http://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html"),"."
+    ,p("Here are the variables you can use in your fun factors."
       ,HTML("<table>"
               ,"<tr><th>var</th><th>description</th></tr>"
               ,"<tr><td>fun</td><td>Your <strong>fun</strong> factor value</td></tr>"
