@@ -31,9 +31,11 @@ shinyUI(fluidPage(
     ,p("Explore and create your fun factor formula for 1974 cars.")
     
     ,p(("The"), strong("fun")
-      ,("factor (y axis) is computed by multiplying the numerators you supply below and dividing by the denominators.")
+      ,("factor is computed by multiplying the numerators you supply below")
+      ,(" and dividing by the denominators.  It's then plotted on the y axis")
+      ,(" with an x axis you choose.")
     )
-    ,p(("To create high"), strong("fun"), ("factor formulas, use")
+    ,p(("To create formulas with high"), strong("fun"), ("factors, use")
       ,br(), ("- \"bigger is better\" numerators.")
       ,br(), ("- \"smaller is better\" denominators.")
     )

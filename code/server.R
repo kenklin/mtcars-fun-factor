@@ -39,19 +39,30 @@ shinyServer(function(input, output, session) {
     cars <- recalcCars()
     
     par(mar = c(5.1, 4.1, 0, 1))
-    ylab <- paste0("fun = (", paste(input$funFactors, collapse=" \u00D7 "), ")")
+
+    title <- paste0("fun = (", paste(input$funFactors, collapse=" \u00D7 "), ")")
     if (length(input$funDenominators) > 0) {
-      ylab <- paste0(ylab, " / (", paste(input$funDenominators, collapse=" \u00D7 "), ")")
+      title <- paste0(title, "/(", paste(input$funDenominators, collapse=" \u00D7 "), ")")
     }
-    
+    title <- paste(title, "vs.", input$xcol)
+
     p <- ggplot(cars, aes_string(x=input$xcol, y="fun")) +
-            ggtitle(paste("fun vs", input$xcol)) +
-            ylab(ylab) +
+            ggtitle(title) +
             geom_point()
+
+    p <- p + geom_smooth(method="lm")
+    
     p <- p + geom_text(hjust=0,
                        angle=-30,
+                       size=4,
                        aes(label=rownames(cars)))
- 
+
+#    p <- ggplot(mtcars, aes(x=wt, y=mpg, label=rownames(mtcars)))
+#    p <- p + geom_text()
+
+#   p <- ggplot(cars, aes_string(x=input$xcol, y="fun"), aes(label=rownames(mtcars)))
+#    p <- p + geom_text()
+
     # Facet?
     if (input$facet != "(none)") {
       p <- p + facet_grid(reformulate(".", input$facet), # input$facet ~ .
