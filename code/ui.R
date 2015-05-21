@@ -73,6 +73,9 @@ shinyUI(fluidPage(
       ,a("slides", href="http://rpubs.com/kenlin/mtcars-fun-factor-slides")
       ,"are also available on RPubs."
     )
+    ,p("For other projects, visit"
+      ,a("kenlin.com", href="http://kenlin.com")
+    )
   ),
 
   mainPanel(
