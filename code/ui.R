@@ -35,6 +35,9 @@ shinyUI(fluidPage(
       ,a("mtcars", href="http://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html")
       ,"dataset are then plotted in the graph and table on the right."
     )
+    ,p("The calculated numeric values appear in the", strong("fun")
+      ,"column in the table on the right."
+    )
     ,p("To create formulas with high", strong("fun"), "factors, try"
       ,br(), "- \"bigger is better\" numerators"
       ,br(), "- \"smaller is better\" denominators"
