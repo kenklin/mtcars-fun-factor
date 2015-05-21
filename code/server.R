@@ -52,16 +52,8 @@ shinyServer(function(input, output, session) {
 
     p <- p + geom_smooth(method="lm")
     
-    p <- p + geom_text(hjust=0,
-                       angle=-30,
-                       size=4,
-                       aes(label=rownames(cars)))
-
-#    p <- ggplot(mtcars, aes(x=wt, y=mpg, label=rownames(mtcars)))
-#    p <- p + geom_text()
-
-#   p <- ggplot(cars, aes_string(x=input$xcol, y="fun"), aes(label=rownames(mtcars)))
-#    p <- p + geom_text()
+    p <- p + geom_text(hjust=0, angle=-30, size=4,
+                       aes(label=rownames(mtcars)))
 
     # Facet?
     if (input$facet != "(none)") {
