@@ -5,9 +5,9 @@ palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
 
 # Returns a vector multiplying all funFactors and dividing funDenominators
 calcFun <- function(cars, funFactors, funDenominators) {
-  fun <- cars[,funFactors[1]]
-  if (length(funFactors) >= 2) { 
-    for (i in 2:length(funFactors)) {
+  fun <- seq(1, length=nrow(cars), by=0) # all 1s
+  if (length(funFactors) > 0) { 
+    for (i in 1:length(funFactors)) {
       fun <- fun * cars[,funFactors[i]]
     }
   }
@@ -40,7 +40,12 @@ shinyServer(function(input, output, session) {
     
     par(mar = c(5.1, 4.1, 0, 1))
 
-    title <- paste0("fun = (", paste(input$funFactors, collapse=" \u00D7 "), ")")
+    title <- "fun = "
+    if (length(input$funFactors) > 0) {
+      title <- paste0(title, "(", paste(input$funFactors, collapse=" \u00D7 "), ")")
+    } else {
+      title <- paste0(title, "1")
+    }
     if (length(input$funDenominators) > 0) {
       title <- paste0(title, "/(", paste(input$funDenominators, collapse=" \u00D7 "), ")")
     }
